@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <title>Weather</title>
+    <meta name="description"
+          content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="/stylesheet.css">
+</head>
+
+<body>
+    <!-- 1. temp 2. city name and country, 3. wind, 4. sky-->
+    <section id="searchBar">
+        <div id="dateBox">
+            <p id="date"></p>
+        </div>
+        <div id="searchBox">
+            <label for="locationSearch"></label>
+            <input type="search"
+                   id="locationSearch"
+                   placeholder=""
+                   results="0"
+                   name="locationSearch">
+        </div>
+    </section>
+    <section id="mainWindow">
+        <main id="today">
+            <p id="temp"></p>
+            <div id="locationBox">
+                <span id="city"></span><span id="locationComma">, </span><span id="country"></span>
+            </div>
+            <div id="conditionBox">
+
+                <p id="condition"></p><img id="weatherIcon"
+                     src="">
+            </div>
+            <div id="tempBox">
+
+                <!-- <p id="temp"><span>&#176;</span></p> -->
+                <p id="feelsLike"></p>
+            </div>
+
+
+        </main>
+    </section>
+    <script src="/script.js"
+            async
+            defer></script>
+</body>
+
+</html>
