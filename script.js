@@ -13,7 +13,8 @@ const icon = document.getElementById('weatherIcon');
 async function callWeatherAPI(location, units = 'metric') {
   APIKey = '37d6c6c2278f9294b160a63118b268fe';
   const response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=${units}`
+    `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=${units}`,
+    { mode: 'cors' }
   );
   const weather = await response.json();
   console.log(weather);
@@ -24,21 +25,21 @@ async function callWeatherAPI(location, units = 'metric') {
 // Populate DOM elements with weather data
 const renderDOM = async (location, units) => {
   const weather = await callWeatherAPI(location, units);
-  
+
   // Access condition & capitalize each word
   const weatherCondition = weather.weather[0]['description']
     .toLowerCase()
     .split(' ')
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(' ');
-  
-    // Access icon
+
+  // Access icon
   const weatherIcon = weather.weather[0].icon;
   icon.setAttribute('src', 'http://openweathermap.org/img/wn/' + weatherIcon + '@2x.png');
-  
+
   // Access city
   const weatherCity = weather['name'];
-  
+
   // Access country
   let weatherCountry = '';
   if (weather.sys.country == 'IL') {
