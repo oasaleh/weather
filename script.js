@@ -13,7 +13,7 @@ const icon = document.getElementById('weatherIcon');
 async function callWeatherAPI(location, units = 'metric') {
   APIKey = '37d6c6c2278f9294b160a63118b268fe';
   const response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=${units}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=${units}`,
     { mode: 'cors' }
   );
   const weather = await response.json();
