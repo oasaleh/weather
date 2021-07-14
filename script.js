@@ -3,6 +3,7 @@ const locationData = new Object();
 locationData.APIKey = '37d6c6c2278f9294b160a63118b268fe';
 locationData.units = 'metric';
 const searchInput = document.getElementById('locationSearch');
+const errorMessage = document.getElementById('errorMessage');
 /* -------------------------------- functions ------------------------------- */
 // Process/determine search filed input and return locationData object with identifying information
 function processSearchInput(searchInput) {
@@ -29,7 +30,7 @@ function processSearchInput(searchInput) {
 // Call OpenWeather API with locationData object and return weather object
 async function callWeatherAPI(processedSearchInput) {
   if (processedSearchInput == undefined) {
-    throw Error(400);
+    console.log('processed data wrong!')
   }
   try {
     if ('zipCode' in processedSearchInput) {
@@ -70,7 +71,7 @@ async function callWeatherAPI(processedSearchInput) {
 // Call OpenWeather Forecast API and return weather object
 async function callForecastAPI(weatherObj) {
   if (weatherObj == undefined) {
-    throw Error(400);
+    // throw Error(400);
   }
   try {
     // console.log(weatherObj);
@@ -138,8 +139,13 @@ async function renderDOM(weather, weatherForecast) {
 }
 
 function clearNode(node) {
-  console.log(node);
+  // console.log(node);
   node.textContent = '';
+}
+
+function showErrorMessage() {
+  const message = 'try Los Angeles, CA or Houston or 55486!'
+  errorMessage.innerText = message
 }
 /* --------------------------- keys -------------------------- */
 // Assign the value inside the search box to variable locationSearch and call
@@ -148,7 +154,7 @@ searchInput.addEventListener('keyup', async function (e) {
   if (e.key === 'Enter' && searchInput.value != '') {
     const location = searchInput.value;
     const processedData = processSearchInput(location);
-    const weather = await callWeatherAPI(processedData);
+    const weather = await callWeatherAPI(processedData).catch(console.error.bind(console));
     const weatherForecast = await callForecastAPI(weather);
     renderDOM(weather, weatherForecast);
 
@@ -161,8 +167,9 @@ async function init(location = 'jerusalem') {
   const weather = await callWeatherAPI(processedData);
   const weatherForecast = await callForecastAPI(weather);
   renderDOM(weather, weatherForecast);
-
+  showErrorMessage()
   locationSearch.value = '';
 }
 
 init();
+
