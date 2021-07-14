@@ -3,55 +3,43 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible"
-          content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Weather</title>
-    <meta name="description"
-          content="">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          href="stylesheet.css">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
-    <!-- 1. temp 2. city name and country, 3. wind, 4. sky-->
     <section id="searchBar">
         <div id="dateBox">
-            <p id="date"></p>
+            <p id="date">Wednesday, July 14, 2021</p>
         </div>
         <div id="searchBox">
             <label for="locationSearch"></label>
-            <input type="search"
-                   id="locationSearch"
-                   placeholder=""
-                   results="0"
-                   name="locationSearch">
+            <input type="search" id="locationSearch" placeholder="" results="0" name="locationSearch">
         </div>
     </section>
     <section id="mainWindow">
         <main id="today">
-            <p id="temp"></p>
+            <p id="temp">24°</p>
             <div id="locationBox">
-                <span id="city"></span><span id="locationComma">, </span><span id="country"></span>
+                <span id="city">Jerusalem</span><span id="country">, PS</span>
             </div>
             <div id="conditionBox">
-
-                <p id="condition"></p><img id="weatherIcon"
-                     src="">
+                <p id="condition">Clear Sky</p><img id="weatherIcon" src="http://openweathermap.org/img/wn/01d@2x.png">
             </div>
             <div id="tempBox">
-
-                <!-- <p id="temp"><span>&#176;</span></p> -->
                 <p id="feelsLike"></p>
             </div>
-
-
+            <section id="forecast">
+                <div id="hourlyForecast" class="forecastStrip">
+                </div>
+                <div id="dailyForecast" class="forecastStrip"><div class="dailyForecast">25°</div><div class="dailyForecast">28°</div><div class="dailyForecast">30°</div><div class="dailyForecast">30°</div><div class="dailyForecast">31°</div><div class="dailyForecast">34°</div><div class="dailyForecast">29°</div><div class="dailyForecast">26°</div></div>
+            </section>
         </main>
     </section>
-    <script src="script.js"
-            async
-            defer></script>
+    <script src="script.js" async defer></script>
 </body>
 
 </html>
