@@ -124,7 +124,7 @@ async function renderDOM(weather, weatherForecast) {
   //Render weather icon
   const icon = document.getElementById('weatherIcon');
   const currentIcon = weather.weather[0].icon;
-  icon.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentIcon + '@2x.png');
+  icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + currentIcon + '@2x.png');
 
   // Render daily temperatures
   const forecast = document.getElementById('dailyForecast');
