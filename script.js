@@ -123,7 +123,9 @@ async function renderDOM(weather, weatherForecast) {
     .join(' ');
   condition.innerText = currentCondition;
   //Render weather icon
+  
   const icon = document.getElementById('weatherIcon');
+  icon.setAttribute('src', '');
   const currentIcon = weather.weather[0].icon;
   icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + currentIcon + '@2x.png');
 
@@ -141,6 +143,7 @@ async function renderDOM(weather, weatherForecast) {
 function clearNode(node) {
   // console.log(node);
   node.textContent = '';
+  
 }
 
 function showErrorMessage() {
