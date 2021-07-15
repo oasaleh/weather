@@ -17,7 +17,7 @@ function processSearchInput(searchInput) {
       locationData.stateCode = cityState[1];
       return locationData;
     } else {
-      console.log('Please use a comma in-between city and state names!');
+      console.log('Please use a comma between city and state!');
     }
   } else if (!/[^a-z\s]/i.test(searchInput)) {
     locationData.cityName = searchInput;
@@ -30,7 +30,7 @@ function processSearchInput(searchInput) {
 // Call OpenWeather API with locationData object and return weather object
 async function callWeatherAPI(processedSearchInput) {
   if (processedSearchInput == undefined) {
-    console.log('processed data wrong!')
+    console.log('processed data wrong!');
   }
   try {
     if ('zipCode' in processedSearchInput) {
@@ -123,7 +123,7 @@ async function renderDOM(weather, weatherForecast) {
     .join(' ');
   condition.innerText = currentCondition;
   //Render weather icon
-  
+
   const icon = document.getElementById('weatherIcon');
   icon.setAttribute('src', '');
   const currentIcon = weather.weather[0].icon;
@@ -143,12 +143,11 @@ async function renderDOM(weather, weatherForecast) {
 function clearNode(node) {
   // console.log(node);
   node.textContent = '';
-  
 }
 
 function showErrorMessage() {
-  const message = 'try Los Angeles, CA or Houston or 55486!'
-  errorMessage.innerText = message
+  const message = 'try Los Angeles, CA or Houston or 55486!';
+  errorMessage.innerText = message;
 }
 /* --------------------------- keys -------------------------- */
 // Assign the value inside the search box to variable locationSearch and call
@@ -170,9 +169,8 @@ async function init(location = 'jerusalem') {
   const weather = await callWeatherAPI(processedData);
   const weatherForecast = await callForecastAPI(weather);
   renderDOM(weather, weatherForecast);
-  showErrorMessage()
+  showErrorMessage();
   locationSearch.value = '';
 }
 
 init();
-
